@@ -1,0 +1,1 @@
+using odataservices as service from '../../srv/service';

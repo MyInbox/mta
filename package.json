@@ -1,0 +1,145 @@
+{
+  "name": "gms",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap-cloud-sdk/http-client": "^3.11.0",
+    "@sap-cloud-sdk/resilience": "^3.11.0",
+    "@sap/cds": "^7",
+    "@sap/cds-hana": "^2",
+    "@sap/cds-odata-v2-adapter-proxy": "^1.9.21",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^7",
+    "@sap/ux-specification": "^1.120.2",
+    "rimraf": "^3.0.2"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-gmsfe": "cds watch --open gmsfe/webapp/index.html?sap-ui-xx-viewCache=false",
+    "undeploy": "cf undeploy gms --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+    "watch-gms": "cds watch --open gms/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-config": "cds watch --open config/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "cds": {
+    "requires": {
+      "auth": "mocked",
+      "db": "hana",
+      "ZGMS_VALUE_HELP_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZGMS_VALUE_HELP_SRV",
+        "csrf": true,
+        "csrfInBatch": true,
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_OData_SAP",
+            "path": "/sap/opu/odata/sap/ZGMS_VALUE_HELP_SRV"
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SandboxPO",
+            "path": "/sap/opu/odata/sap/ZGMS_VALUE_HELP_SRV"
+          }
+        }
+      },
+      "ZAPI_SALES_CONTRACT_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZAPI_SALES_CONTRACT_SRV",
+        "csrf": true,
+        "csrfInBatch": true,
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_OData_SAP",
+            "path": "/sap/opu/odata/sap/API_SALES_CONTRACT_SRV"
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SandboxPO",
+            "path": "/sap/opu/odata/sap/API_SALES_CONTRACT_SRV"
+          }
+        }
+      },
+      "ZSRVPROFD_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZSRVPROFD_SRV",
+        "csrf": true,
+        "csrfInBatch": true,
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_OData_SAP",
+            "path": "/sap/opu/odata/sap/ZSRVPROFD_SRV"
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SandboxPO",
+            "path": "/sap/opu/odata/sap/ZSRVPROFD_SRV"
+          }
+        }
+      },
+      "ZNOMCP_GMS_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZNOMCP_GMS_SRV",
+        "csrf": true,
+        "csrfInBatch": true,
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_OData_SAP",
+            "path": "/sap/opu/odata/sap/ZNOMCP_GMS_SRV"
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SandboxPO",
+            "path": "/sap/opu/odata/sap/ZNOMCP_GMS_SRV"
+          }
+        }
+      },
+      "ZCAPACITYRELEASE_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZCAPACITYRELEASE_SRV",
+        "csrf": true,
+        "csrfInBatch": true,
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_OData_SAP",
+            "path": "/sap/opu/odata/sap/ZCAPACITYRELEASE_SRV"
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SandboxPO",
+            "path": "/sap/opu/odata/sap/ZCAPACITYRELEASE_SRV"
+          }
+        }
+      },
+      "ZSERV_PD_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZSERV_PD_SRV",
+        "csrf": true,
+        "csrfInBatch": true,
+        "[production]": {
+          "credentials": {
+            "destination": "Ingenx_OData_SAP",
+            "path": "/sap/opu/odata/sap/ZSERV_PD_SRV"
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SandboxPO",
+            "path": "/sap/opu/odata/sap/ZSERV_PD_SRV"
+          }
+        }
+      }
+    }
+  }
+}

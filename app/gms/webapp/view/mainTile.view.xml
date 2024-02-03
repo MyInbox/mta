@@ -1,0 +1,41 @@
+<mvc:View controllerName="app.gms.controller.mainTile"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+
+  	<GenericTile id="_IDGenGenericTile1" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Gas Contracting"
+		 press="onGasContract">
+		<TileContent id="_IDGenTileContent1" >
+			<ImageContent id="_IDGenImageContent1" src="sap-icon://decision" />
+		</TileContent>
+	</GenericTile>
+  	<GenericTile id="_IDGenGenericTile2" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Nominations"
+	press="onNomimation">
+		<TileContent id="_IDGenTileContent2"  >
+			<ImageContent id="_IDGenImageContent2" src="sap-icon://pipeline-analysis" />
+		</TileContent>
+	</GenericTile>
+	  	<GenericTile id="_IDGenGenericTile6" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Capacity Release"
+		 press="onCapcityRelease">
+		<TileContent id="_IDGenTileContent6" >
+            <ImageContent id="_IDGenImageContent6" src="sap-icon://feed" />
+        </TileContent>
+	</GenericTile>
+  	<GenericTile id="_IDGenGenericTile3" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Balancing and Scheduling"
+		 press="onBalancing">
+		<TileContent id="_IDGenTileContent3" >
+			<ImageContent id="_IDGenImageContent3" src="sap-icon://compare" />
+		</TileContent>
+	</GenericTile>
+  	<GenericTile id="_IDGenGenericTile4" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Actual and ticketing"
+		 press="actual">
+		<TileContent id="_IDGenTileContent4" >
+			<ImageContent id="_IDGenImageContent4" src="sap-icon://measurement-document" />
+		</TileContent>
+	</GenericTile>
+  	<GenericTile id="_IDGenGenericTile5" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Billing"
+		 press="press78">
+		<TileContent id="_IDGenTileContent5" >
+			<ImageContent id="_IDGenImageContent5" src="sap-icon://customer-financial-fact-sheet" />
+		</TileContent>
+	</GenericTile>
+</mvc:View>

@@ -1,0 +1,26 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+ 
+    <SelectDialog
+        id="material"
+        noDataText="No Products Found"
+        title="Select Material"
+        confirm="onValueHelpClosemat"
+        search="onSearch1"
+        cancel="onValueHelpClosemat"
+        items="{path: '/ZLocMatnr',
+            sorter: {
+				path: 'Pmatnr',
+				descending: false
+			}
+        }">
+        
+        <StandardListItem id="_IDGenardLtItem" validateFieldGroup="_IDGenInput1"
+            title="{Pmatnr}"
+            description="{Locid}"
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

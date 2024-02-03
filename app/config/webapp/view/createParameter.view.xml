@@ -1,0 +1,116 @@
+<mvc:View controllerName="app.config.controller.createParameter"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <Table items="{/serviceProfileParametersItems}" id="table0" selectionChange="onSelect" mode="None">
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <content>
+                            <Title text="{profileModel>/ProfileName} [{profileModel>/ProfileDesc}]"/>
+                            <ToolbarSpacer />
+                            <Button id="createParameterBtn" visible="false" text="Add" width="100px" press="onCreate" type="Emphasized" />
+                            <Button id="deleteParameterBtn" visible="false" text="Delete" width="100px" press="onDelete" type="Emphasized" />
+                            <Button id="editParameterBtn" visible="true" text="Edit Service Parameter" press="onEdit" type="Emphasized" />
+                        </content>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column id="deleteLabel" width="6rem" visible="false">
+                        <header>
+                            <Label id="_IDGenLabel" wrapping="true" text="Delete" />
+                        </header>
+                    </Column>
+                    <Column id="_IDGenColu" width="2rem">
+                        <header>
+                            <Label id="_IDGenLl12" wrapping="true" text="ID" />
+                        </header>
+                    </Column>
+                    <Column id="_IDGenColumn2" width="7rem">
+                        <header>
+                            <Label id="_IDGenLabel7" wrapping="true" text="Service Parameter" />
+                        </header>
+                    </Column>
+
+                    <Column id="_IDGenColum" width="5rem">
+                        <header>
+                            <Label id="_IDGenLabe" wrapping="true" text="Parent ID" />
+                        </header>
+                    </Column>
+                    <Column id="_IDGenColun3" width="7rem">
+                        <header>
+                            <Label id="_IDGenLab7" wrapping="true" text="Contract Relevant" />
+                        </header>
+                    </Column>
+                    <Column id="_IDGenColumn3" width="7rem">
+                        <header>
+                            <Label id="_IDGenLabel8" wrapping="true" text="Value Parameter" />
+                        </header>
+                    </Column>
+                    <Column id="_IDGenColumn4" width="7rem">
+                        <header>
+                            <Label id="_IDGenLabel9" wrapping="true" text="Threshold Relevance" />
+                        </header>
+                    </Column>
+                    <Column id="_IDGenColumn5" width="8rem">
+                        <header>
+                            <Label id="_IDGenLabel10" wrapping="true" text="Threshold Reference" />
+                        </header>
+                    </Column>
+                    <Column id="_IDGenColumn6" width="8rem">
+                        <header>
+                            <Label id="_IDGenLabel11" wrapping="true" text="Nomination Relevant" />
+                        </header>
+                    </Column>
+                    <Column id="_IDGenColumn7" width="8rem">
+                        <header>
+                            <Label id="_IDGenLabel12" wrapping="true" text="Balancing Relevant" />
+                        </header>
+                    </Column>
+                    <Column id="_IDGenColumn8" width="8rem">
+                        <header>
+                            <Label id="_IDGenLabel13" wrapping="true" text="Allocation Relevant" />
+                        </header>
+                    </Column>
+                    <Column id="_IDGenColumn9" width="6rem">
+                        <header>
+                            <Label id="_IDGenLabel14" wrapping="true" text="Billing Relevant" />
+                        </header>
+                    </Column>
+                    <Column id="_IDGenColumn10" width="6rem">
+                        <header>
+                            <Label id="_IDGenLabel15" wrapping="true" text="Penalty Relevant" />
+                        </header>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem type="Active" id="item0">
+                        <cells>
+                            <CheckBox id="deleteCheckBox" select="deleteParameter"/>
+                            <Text id="id2" text="{ID}" />
+                            <Text id="id1" text="{serviceParameter}" />
+                            <Input id="_IDGenInput1" value="{ParentId}" width="60px" />
+                            <CheckBox id="_IDGenCheckBox9" selected="{ContractRelevant}" />
+                            <CheckBox id="_IDGenCheckBox1" selected="{Quantity_Parameter}" />
+                            <CheckBox id="_IDGenCheckBox2" selected="{Threshold_Relevance}" />
+                            <CheckBox id="_IDGenCheckBox3" selected="{Referrence_Relevant}" />
+                            <CheckBox id="_IDGenCheckBox4" selected="{Nomination_Relevant}" />
+                            <CheckBox id="_IDGenCheckBox5" selected="{Balancing_Relevant}" />
+                            <CheckBox id="_IDGenCheckBox6" selected="{Allocation_Relevant}" />
+                            <CheckBox id="_IDGenCheckBox7" selected="{Billing_Relevant}" />
+                            <CheckBox id="_IDGenCheckBox8" selected="{Price_Relevant}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+
+            </Table>
+        </content>
+        <!-- <footer>
+        	<OverflowToolbar id="otbFooter">	
+                <ToolbarSpacer/>		
+				<Button type="Accept" text="Submit" press="onsaveNewProfile">
+				</Button>
+			</OverflowToolbar>
+        </footer> -->
+    </Page>
+</mvc:View>

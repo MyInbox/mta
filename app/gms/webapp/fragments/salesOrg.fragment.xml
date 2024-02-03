@@ -1,0 +1,21 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+    <SelectDialog
+        id="salesOrg"
+        noDataText="No Products Found"
+        title="Select Sales Organisation"
+        search="onValueHelpSearch5"
+        confirm="onValueHelpClose5"
+        cancel="onValueHelpClose5"
+        items="{/Sales_OrgSet}">
+        <StandardListItem id="_IDGenStandardListItem5"
+            title="{Vkorg}"
+            description="{Vkorg}"
+       
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

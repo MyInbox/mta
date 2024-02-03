@@ -1,0 +1,23 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+    <Dialog title="Add Document Type for {addDocDataModel>/profileName}" class="sapUiSmallMargin">
+        <VBox class="sapUiContentPadding sapUiSmallMargin">
+            <Label  text="Document Type :" />
+            <Input  value="{addDocDataModel>/DocumentNo}" showValueHelp="true" valueHelpRequest="onDocValueHelp" />
+            
+            
+        </VBox>
+        <footer>
+        	<OverflowToolbar >	
+                <ToolbarSpacer/>		
+				<Button type="Accept" text="Save" press="onsaveNewDocumentNo">
+				</Button>
+                <Button type="Reject" text="Cancel" press="oncanceleNewDocumentNo">
+				</Button>
+			</OverflowToolbar>
+            <!-- <Button id="_IDGenButton3" text="Create" press="onCreateField" />
+            <Button id="_IDGenButton4" text="Cancel" press="onCancelCreateField" /> -->
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>   

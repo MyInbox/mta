@@ -1,0 +1,87 @@
+<mvc:View
+  xmlns:f2="sap.f"
+  controllerName="app.gms.controller.pastNomination"
+  xmlns:html="http://www.w3.org/1999/xhtml"
+  xmlns:mvc="sap.ui.core.mvc"
+  displayBlock="true"
+  xmlns:tnt="sap.tnt"
+  xmlns:f="sap.ui.layout.form"
+  xmlns:l="sap.ui.layout"
+  xmlns:core="sap.ui.core"
+  xmlns="sap.m">
+
+  <Page id="_IDGenPage1" title="Past Nomination" titleAlignment="Center">
+
+    <Table id="_IDGenTable1" >
+      <layoutData>
+        <l:SplitterLayoutData id="_IDGenSplitterLayoutData1" size="300px" resizable="false" />
+      </layoutData>
+      <columns>
+        <Column id="_IDGenColumn1">
+          <Text id="_IDGenText1" text="Gas Day Date" />
+        </Column>
+        <Column id="_IDGenColumn2">
+          <Text id="_IDGenText2" text="Approved DNQ" />
+        </Column>
+        <Column id="_IDGenColumn3">
+          <Text id="_IDGenText44" text="Approved UoM" />
+        </Column>
+      </columns>
+
+      <items>
+        <ColumnListItem id="_IDGenColumnListItem1">
+          <cells>
+            <Text id="_IDGenText3" text="{gasDay}" />
+            <Text id="_IDGenText4" text="{nomDNQ}" />
+            <Text id="_IDGenText5" text="{nomUOM}" />
+          </cells>
+        </ColumnListItem>
+      </items>
+    </Table>
+
+    <f:SimpleForm id="SimpleFormDisplay354wideDual"
+      editable="false"
+      layout="ResponsiveGridLayout"
+      labelSpanXL="5"
+      labelSpanL="3"
+      labelSpanM="5"
+      labelSpanS="12"
+      adjustLabelSpan="false"
+      emptySpanXL="0"
+      emptySpanL="4"
+      emptySpanM="0"
+      emptySpanS="0"
+      columnsXL="2"
+      columnsL="1"
+      columnsM="1"
+      singleContainerFullSize="false"
+      class="formClass1">
+
+      <f:content>
+        <!-- <VBox class="vbo">
+				
+                <Label  text="Filter Range" labelFor="DRS3"/>
+                <HBox class="hbd">
+                    <DatePicker id="start"
+                                width="150px"
+                                change="handleChange"
+                                class="sapUiSmallMarginBottom"
+                            />
+                            <DatePicker id="end"
+                                width="150px"
+                                change="handleChange"
+                                class="sapUiSmallMarginBottom"
+                            />
+                </HBox>
+            </VBox> -->
+      </f:content>
+    </f:SimpleForm>
+
+    <footer>
+      <Toolbar id="_IDGenToolbar1">
+        <ToolbarSpacer id="_IDGenToolbarSpacer4" />
+      </Toolbar>
+    </footer>
+
+  </Page>
+</mvc:View>

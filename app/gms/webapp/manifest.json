@@ -1,0 +1,326 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "app.gms",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.12.2",
+      "toolsId": "5c54184b-9f4c-480a-a9e0-87490bfa2ec8"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/odataservices/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "gms-Display": {
+          "semanticObject": "gms",
+          "action": "Display",
+          "title": "{{flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.120.4",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "app.gms.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "mainService": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.f.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "app.gms.view",
+        "controlId": "flex"
+      },
+      "routes": [
+        {
+          "name": "Routehome",
+          "pattern": ":?query:",
+          "layout": "OneColumn",
+          "target": [
+            "Targethome"
+          ]
+        },
+        {
+          "name": "RoutemainTile",
+          "pattern": "mainTile",
+          "layout": "OneColumn",
+          "target": [
+            "TargetmainTile"
+          ]
+        },
+        {
+          "name": "RoutegasContract",
+          "pattern": "gasContract",
+          "layout": "OneColumn",
+          "target": [
+            "TargetgasContract"
+          ]
+        },
+        {
+          "name": "RoutecreateGC",
+          "pattern": "createGC",
+          "layout": "OneColumn",
+          "target": [
+            "TargetcreateGC"
+          ]
+        },
+        {
+          "name": "Routenomination",
+          "pattern": "nomination",
+          "layout": "OneColumn",
+          "target": [
+            "Targetnomination"
+          ]
+        },
+        {
+          "name": "RoutepublishNom",
+          "pattern": "publishNom",
+          "layout": "TwoColumnsMidExpanded",
+          "target": [
+            "TargetpublishNom", "TargetcreateNomination"
+          ]
+        },
+        {
+          "name": "RoutecontractId",
+          "pattern": "createNomination/{contractId}",
+          "layout": "TwoColumnsMidExpanded",
+          "target": [
+            "TargetpublishNom", "TargetcreateNomination"
+          ]
+        },
+        {
+          "name": "RoutepastNomination",
+          "pattern": "pastNomination",
+          "layout": "ThreeColumnsMidExpanded",
+          "target": [
+            "TargetpublishNom", "TargetcreateNomination", "TargetpastNomination"
+          ]
+        },
+        {
+          "name": "RoutepublishReNom",
+          "pattern": "publishReNom",
+          "layout": "TwoColumnsMidExpanded",
+          "target": [
+            "TargetpublishReNom", "TargetupdateNomination"
+          ]
+        },
+        {
+          "name": "Routebalancing",
+          "pattern": "balancing",
+          "layout": "OneColumn",
+          "target": [
+            "Targetbalancing"
+          ]
+        },
+        {
+          "name": "RoutecapacityRelease",
+          "pattern": "capacityRelease",
+          "layout": "OneColumn",
+          "target": [
+            "TargetcapacityRelease"
+          ]
+        },
+        {
+          "name": "RoutecapacityAvailability",
+          "pattern": "capacityAvailability",
+          "layout": "OneColumn",
+          "target": [
+            "TargetcapacityAvailability"
+          ]
+        }
+      ],
+      "targets": {
+        "Targethome": {
+          "viewType": "XML",
+          "transition": "slide",
+          "controlAggregation": "beginColumnPages",
+          "viewId": "home",
+          "viewName": "home"
+        },
+        "TargetmainTile": {
+          "viewType": "XML",
+          "transition": "slide",
+          "controlAggregation": "beginColumnPages",
+          "viewId": "mainTile",
+          "viewName": "mainTile"
+        },
+        "TargetgasContract": {
+          "viewType": "XML",
+          "transition": "slide",
+          "controlAggregation": "beginColumnPages",
+          "viewId": "gasContract",
+          "viewName": "gasContract"
+        },
+        "TargetcreateGC": {
+          "viewType": "XML",
+          "transition": "slide",
+          "controlAggregation": "beginColumnPages",
+          "viewId": "createGC",
+          "viewName": "createGC"
+        },
+        "Targetnomination": {
+          "viewType": "XML",
+          "transition": "slide",
+          "controlAggregation": "beginColumnPages",
+          "viewId": "nomination",
+          "viewName": "nomination"
+        },
+        "TargetpublishNom": {
+          "viewType": "XML",
+          "transition": "slide",
+          "controlAggregation": "beginColumnPages",
+          "viewId": "publishNom",
+          "viewName": "publishNom"
+        },
+        "TargetcreateNomination": {
+          "viewType": "XML",
+          "transition": "slide",
+          "controlAggregation": "midColumnPages",
+          "viewId": "createNomination",
+          "viewName": "createNomination"
+        },
+        "TargetpastNomination": {
+          "viewType": "XML",
+          "transition": "slide",
+          "controlAggregation": "endColumnPages",
+          "viewId": "pastNomination",
+          "viewName": "pastNomination"
+        },
+        "TargetpublishReNom": {
+          "viewType": "XML",
+          "transition": "slide",
+          "controlAggregation": "beginColumnPages",
+          "viewId": "publishReNom",
+          "viewName": "publishReNom"
+        },
+        "TargetupdateNomination": {
+          "viewType": "XML",
+          "transition": "slide",
+          "controlAggregation": "midColumnPages",
+          "viewId": "updateNomination",
+          "viewName": "updateNomination"
+        },
+        "TargetpastReNomination": {
+          "viewType": "XML",
+          "transition": "slide",
+          "controlAggregation": "endColumnPages",
+          "viewId": "pastReNomination",
+          "viewName": "pastReNomination"
+        },
+        "Targetbalancing": {
+          "viewType": "XML",
+          "transition": "slide",
+          "controlAggregation": "beginColumnPages",
+          "viewId": "balancing",
+          "viewName": "balancing"
+        },
+        "TargetcapacityRelease": {
+          "viewType": "XML",
+          "transition": "slide",
+          "controlAggregation": "beginColumnPages",
+          "viewId": "capacityRelease",
+          "viewName": "capacityRelease"
+        },
+        "TargetcapacityAvailability": {
+          "viewType": "XML",
+          "transition": "slide",
+          "controlAggregation": "beginColumnPages",
+          "viewId": "capacityAvailability",
+          "viewName": "capacityAvailability"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "app.gms.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}

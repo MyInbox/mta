@@ -1,0 +1,263 @@
+<mvc:View
+    controllerName="app.gms.controller.createGC"
+    xmlns:table="sap.ui.table"
+    xmlns:mvc="sap.ui.core.mvc"
+    busyIndicatorDelay="0"
+    displayBlock="true"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:tnt="sap.tnt"
+    height="400px"
+>
+    <VBox id="_IDGenVBox" class="sapUiTinyMarginTop">
+        <HBox id="_IDGenHBox1" class="_IDGenHBox1top">
+            <Label id="_IDGenL" class="docTypeLabel" text="Document Type:" />
+            <Input id="docType_id" width="200px" showValueHelp="true" valueHelpRequest="onDocType" value="{sales>/SalesContractType}" />
+        </HBox>
+    </VBox>
+
+    <f:DynamicPage id="dynamicPageId" stickySubheaderProvider="iconTabBar" class="sapUiNoContentPadding">
+        <f:title>
+            <f:DynamicPageTitle id="_IDGenDynamicPageTitle1">
+                <f:heading>
+                    <Title id="_IDGenTitle12" text="{sales>/SalesContractType}" />
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <f:content>
+            <IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding" select="onSelectoptions">
+                <items>
+                    <IconTabFilter id="_IDGenIconTabFilter1" text="Header Details" key="HD">
+                        <Table visible= "false" items="{path: 'mainService>/ServiceProfile', parameters: {$count: true}}" id="table55"
+                        updateFinished="on55UpdateFinished">
+                            <columns>
+                                <Column width="2rem">
+                                    <header>
+                                        <Label wrapping="true" design="Bold" text="ID" />
+                                    </header>
+                                </Column>
+                                <Column width="2rem">
+                                    <header>
+                                        <Label wrapping="true" design="Bold" text="ss" />
+                                    </header>
+                                </Column>
+                                <Column width="2rem">
+                                    <header>
+                                        <Label wrapping="true" design="Bold" text="sss" />
+                                    </header>
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <Text text="{mainService>ID}" />
+                                        <Text text="{mainService>serviceProfileName}" />
+                                        <Text text="{mainService>field1}" />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                        <form:SimpleForm id="_IDGenSimpleForm1">
+                            <form:toolbar>
+                                <Toolbar id="TB1">
+                                    <Title id="Title1" text="Header Details" />
+                                    <ToolbarSpacer id="_IDGenToolbarSpacer4" />
+                                </Toolbar>
+                            </form:toolbar>
+                            <form:content>
+                                <VBox id="_IDGenVBox1" visible="false">
+                                    <Label id="_IDGenLab" text="Sales Contract" labelFor="SalesContract" design="Bold"/>
+                                    <Input id="salesContract_id" value="{sales>/SalesContract}" editable="false"/>
+                                </VBox>
+                                 <Label id="_IDGenLabel" text="" />
+                                 <Text/>
+                                <Label id="_IDGenLabel2" text="Sold to Party"/>
+                                <Input id="SoldTP_id" width="200px" showValueHelp="true" valueHelpRequest="onSoldToParty" value="{sales>/SoldToParty}" />
+                                <Label id="_IDGenLabel3" text="Ship to Party"/>
+                                <Input id="ShipTP_id" width="200px" showValueHelp="true" valueHelpRequest="onShipToParty" value="{sales>/ShipToParty}"/>
+                                <Label id="_IDGenLabel4" text="Sales Organization" />
+                                <Input id="SalesOrg_id" width="200px" showValueHelp="true" valueHelpRequest="onSalesOrg" value="{sales>/SalesOrganization}"/>
+                                <Label id="_IDGenLabel5" text="Division" />
+                                <Input id="division_id" width="200px" showValueHelp="true" valueHelpRequest="onDivision" value="{sales>/OrganizationDivision}"/>
+                                <core:Title id="_IDGenTitle2" />
+                                <Label id="_IDGenLabel6" text="Distribution Channel" />
+                                <Input id="distChan_id" width="200px" showValueHelp="true" valueHelpRequest="onDistChanType" value="{sales>/DistributionChannel}"/>
+                                <Label id="_IDGenLabel7" text="Valid From" />
+                                <DatePicker id="DP1" placeholder="‎" change="onSelectDate" width="200px" class="sapUiSmallMarginBottom" value="{sales>/SalesContractValidityStartDate}" />
+                                <Label id="_IDGenLabel8" text="Valid To" />
+                                <DatePicker id="DP2" placeholder="‎" change="onSelectDate" width="200px" class="sapUiSmallMarginBottom" value="{sales>/SalesContractValidityEndDate}" />
+                                <Label id="_IDGenLabel28" text="" />
+                                <!-- <Button id="_IDGenButton1" text="Go to Item Details" class="sapUiSmallMarginBottom" press="onProceedItem" width="200px" ariaHasPopup="Dialog" /> -->
+                            </form:content>
+                        </form:SimpleForm>
+                    </IconTabFilter>
+
+                    <IconTabFilter id="_IDGenIconTabFilter2" key="ID" text="Item Details">
+                        <form:SimpleForm id="_IDGenSimpleForm2" >
+                            <form:toolbar>
+                                <Toolbar id="TB2">
+                                    <Title id="Title2" text="Item Details"/>
+                                    <ToolbarSpacer id="_IDGen"/>
+                                </Toolbar>
+                            </form:toolbar>
+                            <form:content >
+                                <core:Title id="_IDGenTitle5" />
+                                <Label id="_IDGenLabel9"  text="Material"/>
+                                <Input id="material_id"  width="200px" showValueHelp="true"  valueHelpRequest="onMaterial" value="{sales>/to_Item/0/Material}"/>
+                                <Label id="_IDGenLabel10"  text="UOM"/>
+                                <Input id="Uom_id"  width="200px" showValueHelp="true"  valueHelpRequest="onUom" value="{sales>/to_Item/0/RequestedQuantityUnit}"/>
+                                <!-- <Text id="Uom_id"  width="200px" text="{mainService>/RequestedQuantityUnit}"/> -->
+                                <Label id="_IDGenLabel11" text="Plant" />
+                                <Input id="plant_id" width="200px" showValueHelp="true" valueHelpRequest="onPlant" value="{sales>/to_Item/0/ProductionPlant}" />
+                                <Label id="_IDGenLabel1"  text="Price List" />
+                                <Input id="priceList_id"  width="200px" showValueHelp="true" valueHelpRequest="onPList"/>
+                                <Label id="_IDGenLabel13"  text="Target Quantity" />
+                                <Input id="_IDGenInput9"  width="200px" value="{sales>/to_Item/0/RequestedQuantity}"/>
+                                <!-- <Label id="_IDGenLabel12"  text="Sales Contract Item" />
+                                <Input id="_IDGenInput8"  width="200px" value="{profile>/ItemNo}"/> -->
+                                <core:Title id="_IDGenTitle4" />
+                                <Label id="_IDGenLabel29"  text="Item Description" />
+                                <Text id="_IDGenInput29"  width="200px"/>
+                                <Label id="_IDGenLabel15"  text="Delivery Point" />
+                                <Input id="delivery_id"  width="200px" showValueHelp="true" valueHelpRequest="onDelivery"/>
+                                <Label id="_IDGenLabel14"  text="Re-Delivery Point" />
+                                <Input id="receipt_id"  width="200px" showValueHelp="true" valueHelpRequest="onReceipt"/>
+                                <Label id="_IDGenLabel16"  text="Service Profile" />
+                                <Input id="serviceProfile_id"  width="200px" showValueHelp="true" valueHelpRequest="onSProfile" value="{profile>/ServiceProfile}"/>
+                                <Label text="Fuel" labelFor="Fuel"/>
+                                <RadioButtonGroup id="Fuel" select="onRadioButtonSelect" columns="2">
+                                    <buttons>
+                                        <RadioButton text="Yes"  />
+                                        <RadioButton text="No" selected="true"/>
+                                    </buttons>
+                                </RadioButtonGroup> 
+                                <Label/>
+                                <!-- <Button id="_IDGenButton2" text="Go to Service Catalogue" class="sapUiSmallMarginBottomBtn" press="onProceedServ" width="200px" ariaHasPopup="Dialog" />                           -->
+                            </form:content>
+                        </form:SimpleForm>
+                    </IconTabFilter>
+
+                    <IconTabFilter id="_IDGenIconTabFilter3" text="Service Catalogue">
+                        <Table items="{contractData>/}" id="table66" mode="None">
+                            <columns>
+                                <Column  width="7rem">
+                                    <header>
+                                        <Title id="title2" text="Service Parameter" />
+                                    </header>
+                                </Column>
+                                <Column width="7rem">
+                                    <header>
+                                        <Title id="title3" text="Value" />
+                                    </header>
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <Text text="{contractData>}" />
+                                        <Input width="100px" value="{profile>/contractData>}"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+
+                        <VBox id="_IDGenVBox6">
+                        <Button text="Add" press="onCreatePress" ></Button>
+                            <Table id="tab">
+                                <columns>
+                                    <Column>
+                                        <Text text="Clause Code" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Valid From" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Valid To" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Threshold%" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Threshold Reference" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Remark" />
+                                    </Column>
+                                </columns>
+                                <ColumnListItem>
+                                    <cells>
+                                        <ComboBox
+                                            width="100px"
+                                            id="serviceParameter"
+                                            items="{threshHoldData>/}"
+                                        >
+                                            <core:Item
+                                                key=""
+                                                text="{threshHoldData>}"
+                                            />
+                                        </ComboBox>
+
+                                       <DatePicker width="100px" ></DatePicker>
+                                       <DatePicker width="100px" ></DatePicker>
+                    
+
+                                 <Input width="100px"></Input>
+
+                                        <ComboBox
+                                            width="130px"
+                                            items="{relevenceData>/}"
+                                        >
+                                            <core:Item
+                                                key=""
+                                                text="{relevenceData>}"
+                                            />
+                                        </ComboBox>
+                                    <Input width="100px"></Input>
+
+                                    </cells>
+                                </ColumnListItem>
+                                <!-- <ColumnListItem > -->
+                                
+                                <!-- <cells>
+                                        <ComboBox
+                                            width="100px"
+                                            id="serviceParameter1"
+                                            items="{serviceParameter>/}"
+                                        >
+                                            <core:Item
+                                                key=""
+                                                text="{serviceParameter>serviceParameter}"
+                                            />
+                                        </ComboBox>
+
+                                     <DatePicker width="100px" ></DatePicker>
+                                       <DatePicker width="100px" ></DatePicker>
+
+                                 <Input width="100px"></Input>
+
+                                        <ComboBox
+                                            width="130px"
+                                            items="{relevenceDataModel>/}"
+                                        >
+                                            <core:Item
+                                                key=""
+                                                text="{relevenceDataModel>serviceParameter}"
+                                            />
+                                        </ComboBox>
+                                    <Input width="100px"></Input>
+
+                                    </cells> -->
+                                
+                                <!-- </ColumnListItem> -->
+                            </Table>
+                        <Button id="_IDGenButton" text="Submit" width="100px" class="sapUiSmallMargin" type="Emphasized" press="onSubmitgms" />
+                        </VBox>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

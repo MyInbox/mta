@@ -1,0 +1,64 @@
+<mvc:View controllerName="app.config.controller.pathFuel"
+  xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+  xmlns="sap.m">
+  
+  <Page id="page" title="{i18n>title}" showHeader="false">
+    <Button text="Create" press="onCreateButtonPress" />
+    
+    <Table id="table">
+      <columns>
+        <Column>
+          <Text text="S.No" />
+        </Column>
+        <Column>
+          <Text text="Delivery Point" />
+        </Column>
+        <Column>
+          <Text text="Delivery Point Transport System" />
+        </Column>
+        <Column>
+          <Text text="Redelivery Point" />
+        </Column>
+        <Column>
+          <Text text="Redelivery Point Transport System" />
+        </Column>
+        <Column>
+          <Text text="Interconnect Path Required" />
+        </Column>
+        <Column>
+          <Text text="Interconnect" />
+        </Column>
+        <Column>
+          <Text text="PATH" />
+        </Column>
+        <Column>
+          <Text text="Fuel %" />
+        </Column>
+      </columns>
+      
+      <items>
+        <ColumnListItem>
+          <cells>
+            <!-- <Select items="{ path: '/Profile' }">
+              <core:Item text="{Pname}" />
+            </Select>
+            <Input editable="false" />
+            <Select items="{ path: '/Profile' }">
+              <core:Item text="{Pname}" />
+            </Select>
+            <Input editable="false" />
+            <Input editable="false" />
+            <Select items="{ path: '/Profile' }">
+              <core:Item text="{Pname}" />
+            </Select>
+            <Select items="{ path: '/Profile' }">
+              <core:Item text="{Pname}" />
+            </Select> -->
+          </cells>
+        </ColumnListItem>
+      </items>
+    </Table>
+    
+    <Button text="Submit" />
+  </Page>
+</mvc:View>

@@ -1,0 +1,86 @@
+<mvc:View
+  xmlns:f2="sap.f"
+  controllerName="app.gms.controller.createNomination"
+  xmlns:html="http://www.w3.org/1999/xhtml"
+  xmlns:mvc="sap.ui.core.mvc"
+  displayBlock="true"
+  xmlns:tnt="sap.tnt"
+  xmlns:f="sap.ui.layout.form"
+  xmlns:l="sap.ui.layout"
+  xmlns:core="sap.ui.core"
+  xmlns="sap.m"
+  height="500px">
+
+  <Page id="_IDGenPage1" title="Nomination Detail" titleAlignment="Center">
+    <f:SimpleForm id="SimpleFormDisplay354wideDual"
+      class="formClass">
+      <f:content>
+        <Label id="_IDGenLabel1" text="Contract ID" design="Bold"/>
+        <Text id="contractID" text="{SalesContract}" />
+      </f:content>
+      <f:content>
+        <Label id="_IDGenLabel2" text="Material" design="Bold"/>
+        <Text id="Material" text="{to_Item/0/Material}" />
+      </f:content>
+      <f:content>
+        <Label id="_IDGenLabel3" text="Doc. Type" design="Bold"/>
+        <Text id="SalesContractType" text="{SalesContractType}" />
+      </f:content>
+    </f:SimpleForm>
+
+    <Table id="_IDGenTable1">
+      <headerToolbar>
+        <OverflowToolbar id="_IDGenOverflowToolbar2">
+          <Title id="_IDGenTitle3" text="ITEM DETAIL" level="H2"></Title>
+          <ToolbarSpacer id="_IDGenToolbarSpacer3"></ToolbarSpacer>
+        </OverflowToolbar>
+      </headerToolbar>
+      <columns>
+        <Column id="_IDGenColumn4" width="300px">
+          <Text id="_IDGenText8" text="Gas Day" width="300px"></Text>
+        </Column>
+      </columns>
+      <ColumnListItem id="_IDGenColumnListItem2">
+        <cells>
+          <DatePicker
+          width="200px"
+        id="dt"
+        change="onSelectOption"
+          />
+        </cells>
+      </ColumnListItem>
+    </Table>
+
+    <Table id="_IDGenTable2">
+      <headerToolbar>
+        <OverflowToolbar id="_IDGenOverflowToolbar1">
+          <Title id="_IDGenTitle2" text="NOMINATE QUANTITY" textAlign="Center" level="H2"></Title>
+          <ToolbarSpacer id="_IDGenToolbarSpacer2"></ToolbarSpacer>
+        </OverflowToolbar>
+      </headerToolbar>
+      <columns>
+        <Column id="_IDGenColumn1">
+          <Text id="_IDGenText3" text="Daily Nominate Quantity (DNQ)"></Text>
+        </Column>
+        <Column id="_IDGenColumn3">
+          <Text id="_IDGenText5" text="Event"></Text>
+        </Column>
+      </columns>
+      <ColumnListItem id="_IDGenColumnListItem1">
+        <cells>
+          <Input id="pdnq" width="100px"/>
+          <Input id="event" width="100px"/>
+        </cells>
+      </ColumnListItem>
+      <ColumnListItem id="_IDGenColumnListItem3" selected="false">
+        <cells>
+        </cells>
+      </ColumnListItem>
+    </Table>
+
+    <InputListItem id="_IDGenInputListItem1" class="sapUiSmallMarginTop" >
+      <Input id="remarks" class="sapUiSmallMargin" placeholder="Remarks.."  width="400px" textAlign="End"></Input>
+    </InputListItem>
+    <Button id="_IDGenButton1" text="Create Nomination" class="sapUiSmallMargin" type="Emphasized" press="createNomination"></Button>
+  </Page>
+</mvc:View>

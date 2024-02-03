@@ -1,0 +1,21 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+    <SelectDialog
+        id="shipToParty"
+        noDataText="No Products Found"
+        title="Select Ship To Party"
+        search="onValueHelpSearch3"
+        confirm="onValueHelpClose3"
+        cancel="onValueHelpClose3"
+        items="{/Ship_To_PartySet}">
+        <StandardListItem id="_IDGenStandardListItem3"
+            title="{Spart}"
+            description="{Vkorg}"
+       
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

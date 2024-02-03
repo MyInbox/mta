@@ -1,0 +1,116 @@
+<mvc:View
+    controllerName="app.gms.controller.capacityRelease"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns:tnt="sap.tnt"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:semantic="sap.m.semantic"
+    xmlns:core="sap.ui.core"
+    xmlns:cards="sap.f.cards"
+    xmlns:ui="sap.ui.table"
+    xmlns:u="sap.ui.unified"
+    xmlns:c="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns="sap.m">
+
+    <Panel
+        id="_IDGenPage1"
+        backgroundDesign="Solid">
+
+        <headerToolbar>
+            <OverflowToolbar
+                id="_IDGenOverflowToolbar1"
+                design="Solid"
+                asyncMode="true">
+            </OverflowToolbar>
+        </headerToolbar>
+
+        <content>
+            <VBox
+                id="_IDGenVBox1"
+                justifyContent="Start"
+                alignItems="Center"
+                width="100%"
+                alignContent="SpaceAround">
+
+                <OverflowToolbar id="_IDGenOverflowToolbar9">
+                    <Title
+                        id="_IDGenTitle2"
+                        text="SELECTIONS PARAMETERS"
+                        textAlign="Center">
+                    </Title>
+                </OverflowToolbar>
+
+                <items>
+                    <form:SimpleForm
+                        id="_IDGenSimpleForm1"
+                        maxContainerCols="1"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        columnsL="1"
+                        columnsM="1"
+                        columnsXL="1">
+
+                        <Label
+                            id="_IDGenLabel1"
+                            text="Location ID"
+                            textAlign="Left"
+                            textDirection="LTR"/>
+
+                        <Input
+                            id="loc_ID"
+                            value=""
+                            showValueHelp="true"
+                            valueHelpRequest="onLocationValueHelp"
+                            required="true"
+                            valueHelpOnly="true"/>
+
+                        <Label
+                            id="_IDGenLabel2"
+                            text="Material"/>
+
+                        <Input
+                            id="material_ID"
+                            value=""
+                            showValueHelp="true"
+                            valueHelpRequest="onMaterialValueHelp"
+                            change="onInputFieldChange1"
+                            required="true"
+                            valueHelpOnly="true"/>
+
+                        <Label
+                            id="_IDGenLabel3"
+                            text="Gas Day"/>
+
+                        <DateTimePicker
+                            xmlns="sap.m"
+                            id="DP1"
+                            placeholder="Enter Date"
+                            value="{
+                                'path': '/valueDP1',
+                                'type': 'sap.ui.model.type.DateTime',
+                                'formatOptions': {
+                                    'pattern': 'YYYY-MM-ddThh:mm:ss.sTZD'
+                                }
+                            }"
+                            change="handleChange"
+                            displayFormat="{YYYY-MM-dd Thh:mm:ss.sTZD}"
+                            class="sapUiSmallMarginBottom"
+                            required="true"/>
+                    </form:SimpleForm>
+
+                    <Button
+                        id="_IDGenButton3"
+                        text="Execute"
+                        press="onSubmitPress"
+                        iconDensityAware="false"
+                        class="sapUiSmallMargin"
+                        type="Emphasized"/>
+                </items>
+            </VBox>
+        </content>
+    </Panel>
+</mvc:View>

@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+    <Dialog id="createDialog" title="Create Field" class="sapUiSmallMargin">
+        <VBox class="sapUiContentPadding sapUiSmallMargin">
+            <Label id="_IDGenLabel17" text="Field Name :" />
+            <Input id="newFieldNameInput" value="{addServiceModel>/fieldName}" placeholder="Enter field name" />
+            <Label id="_IDGenLabel18" text="Field Description :" />
+            <Input id="newFieldNameInputdesc" value="{addServiceModel>/fieldDesc}" placeholder="Enter field name description" />
+            <Label id="_IDGenLabel16" text="Field Type :" />
+            <Select id="fieldTypeComboBox" width="100%" selectedKey="{addServiceModel>/selectedFieldType}" items="{addServiceModel>/fieldTypeList}" change="onComboBoxChange" >
+                <items>
+                    <core:Item key="{addServiceModel>key}" text="{addServiceModel>text}" />
+                </items>
+            </Select>
+            <Input placeholder="Enter Length" value="{addServiceModel>/fieldLength}" type="Number" visible="{=${addServiceModel>/selectedFieldType} === 'String' ? true : false}" />
+        </VBox>
+        <footer>
+        	<OverflowToolbar id="otbFooter">	
+                <ToolbarSpacer/>		
+				<Button type="Accept" text="Save" press="onsaveNewProfile">
+				</Button>
+                <Button type="Reject" text="Cancel" press="oncancelNewProfile">
+				</Button>
+			</OverflowToolbar>
+            <!-- <Button id="_IDGenButton3" text="Create" press="onCreateField" />
+            <Button id="_IDGenButton4" text="Cancel" press="onCancelCreateField" /> -->
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>   

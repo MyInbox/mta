@@ -1,0 +1,24 @@
+<mvc:View controllerName="app.gms.controller.App"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:f="sap.f"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt">
+    <Panel id="_IDGenPanel1" >
+   
+     <tnt:ToolHeader id="_IDGenToolHeader1"  class="sapUiTinyMargin">
+            <Button visible="true" icon="sap-icon://nav-back" type="Transparent" id="_IDGenButton2" press="onPressBack" tooltip="Search"/>
+            <Image id="_IDGenImage1" src="./Images/image001.jpg" decorative="false" press="onLogoPressed" tooltip="Ingenx Logo" width="100px" height="40px"/>
+            <ToolbarSpacer id="_IDGenToolbarSpacer1"  width="15px" />
+            <Title text="Gas Management System" wrapping="true" id="productName"/>
+            <ToolbarSpacer id="_IDGenToolbarSpacer2"/>
+            <Avatar id="_IDGenAvatar1" src="" displaySize="XS" press=".onAvatarPressed" tooltip="Profile"/>
+    </tnt:ToolHeader>
+    </Panel>
+    <App id="app">
+    <f:FlexibleColumnLayout id="flex" layout="{layoutColumns>/layout}">
+    
+    </f:FlexibleColumnLayout>
+    </App>
+
+</mvc:View>

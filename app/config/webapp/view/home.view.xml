@@ -1,0 +1,10 @@
+<mvc:View controllerName="app.config.controller.home"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <GenericTile id="_IDGenGenericTile1" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Service Profile Definition" press="onCreate" />
+        <GenericTile id="_IDGenGenericTile2" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Service Profile Mapping" press="onEdit" />
+        <GenericTile id="_IDGenGenericTile3" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Path And Fuel Mapping" press="onPathFuel" />
+        <GenericTile id="_IDGenGenericTile4" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Allocation Rule Definition" press="onProMap" />
+    </Page>
+</mvc:View>

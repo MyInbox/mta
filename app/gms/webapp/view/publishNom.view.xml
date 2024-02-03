@@ -1,0 +1,29 @@
+<mvc:View controllerName="app.gms.controller.publishNom"
+          xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:mvc="sap.ui.core.mvc"
+          displayBlock="true"
+          xmlns:f="sap.f"
+          xmlns:core="sap.ui.core"
+          xmlns="sap.m"
+          >
+
+  <Page id="_IDGenPage1" title="Contracts" titleAlignment="Center"> 
+    <SearchField id="idsf" search="onSearch" placeholder="Contract Number or Description"></SearchField>
+
+    <content>
+      <List id="idlst" selectionChange="onContractSelect" mode="SingleSelectMaster" growing="true" growingScrollToLoad="true" growingThreshold="9" items="{
+          path: '/A_SalesContract',
+          sorter: {
+            path: 'SalesContract',
+            descending: true
+          }
+      }">
+
+        <ObjectListItem id="_IDGenObjectListItem1" title="Contract Number" number="{SalesContract}">
+        </ObjectListItem>
+
+      </List>
+    </content>
+
+  </Page>
+</mvc:View>

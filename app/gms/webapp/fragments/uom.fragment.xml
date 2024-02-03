@@ -1,0 +1,21 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+    <SelectDialog
+        id="uom"
+        noDataText="No Products Found"
+        title="Select UOM"
+        search="onValueHelpSearch8"
+        confirm="onValueHelpClose8"
+        cancel="onValueHelpClose8"
+        items="{/UOMSet}">
+        <StandardListItem id="_IDGenStandardListItem8"
+            title="{Msehi}"
+            description="{Msehi}"
+       
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

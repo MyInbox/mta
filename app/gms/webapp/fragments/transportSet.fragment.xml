@@ -1,0 +1,21 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+    <SelectDialog
+        id="transport"
+        noDataText="No Products Found"
+        title="Select Transport"
+        search="onValueHelpSearch10"
+        confirm="onValueHelpClose10"
+        cancel="onValueHelpClose10"
+        items="{/TransportSet}">
+        <StandardListItem id="_IDGenStandardListItem10"
+            title="{Tsyst}"
+            description="{Tsnam}"
+       
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

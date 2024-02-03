@@ -1,0 +1,21 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+    <SelectDialog
+        id="distChan"
+        noDataText="No Products Found"
+        title="Select Distribution Channel"
+        search="onValueHelpSearch4"
+        confirm="onValueHelpClose4"
+        cancel="onValueHelpClose4"
+        items="{/Dist_ChannelSet}">
+        <StandardListItem id="_IDGenStandardListItem4"
+            title="{Vtweg}"
+            description="{Vtweg}"
+       
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

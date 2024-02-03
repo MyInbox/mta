@@ -1,0 +1,21 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+    <SelectDialog
+        id="plant"
+        noDataText="No Products Found"
+        title="Select Plant"
+        search="onValueHelpSearch9"
+        confirm="onValueHelpClose9"
+        cancel="onValueHelpClose9"
+        items="{/PlantSet}">
+        <StandardListItem id="_IDGenStandardListItem9"
+            title="{Werks}"
+            description="{Matnr}"
+       
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

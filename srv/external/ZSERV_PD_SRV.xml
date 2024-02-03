@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://35.185.33.183:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://35.185.33.183:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://35.185.33.183:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://35.185.33.183:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://35.185.33.183:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZSERV_PD_SRV" xml:lang="en" sap:schema-version="1"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ServProf" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                    <PropertyRef Name="Vbeln"/>
+                    <PropertyRef Name="ProfileId"/>
+                </Key>
+                <Property Name="ThresholdP" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Threshold Perc" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DeliveryPt" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Location ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ItemNo" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CalculatedValue" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Calculated Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RedeliveryPt" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Location ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Vbeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Sales Document" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ProfileId" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ServProfile" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Service Profile" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ClauseCode" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Clause Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Firm" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Firm" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Interruptible" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Interruptable" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ValidFrom" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Path" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Path" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ValidTo" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Rank" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Rank" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Dcq" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="DCQ" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ThreshRef" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Threshold Reference" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaxDcq" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Max DCQ" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Remark" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Remark" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MinDcq" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Min DCQ" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FuelProvider" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Fuel Provider" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FuelPer" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Fuel%" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Aacq" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="AACQ" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="OverrunAllowed" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Overrun allowed" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UnderrunAllowed" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Underrun allowed" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TakePay" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Take or pay" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EarlyTermCharge" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Early Termination" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="CreateSP" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="IdtoServiceNav" Relationship="ZSERV_PD_SRV.IdtoServiceAsso" FromRole="FromRole_IdtoServiceAsso" ToRole="ToRole_IdtoServiceAsso"/>
+            </EntityType>
+            <EntityType Name="ZServProf_GetType" sap:label="Service Profile Get" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Vbeln"/>
+                    <PropertyRef Name="Id"/>
+                    <PropertyRef Name="ProfileId"/>
+                    <PropertyRef Name="ServProfile"/>
+                    <PropertyRef Name="ServiceParam"/>
+                    <PropertyRef Name="ItemNo"/>
+                    <PropertyRef Name="ClauseCode"/>
+                </Key>
+                <Property Name="Vbeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales document" sap:quickinfo="Sales Document"/>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="ID" sap:quickinfo="Id"/>
+                <Property Name="ProfileId" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Profile Id"/>
+                <Property Name="ServProfile" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Service Profile"/>
+                <Property Name="ServiceParam" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Service Parameter"/>
+                <Property Name="ItemNo" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="Sales Document Item"/>
+                <Property Name="ClauseCode" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Service Parameter"/>
+                <Property Name="ParamValue" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Parameter Value" sap:quickinfo="Service Parameter Value"/>
+                <Property Name="ParamType" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Parameter Type"/>
+                <Property Name="DeliveryPt" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Delivery Point"/>
+                <Property Name="RedeliveryPt" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Redelivery Point"/>
+                <Property Name="ValidFrom" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Valid From"/>
+                <Property Name="ValidTo" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Valid To"/>
+                <Property Name="ThresholdP" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="Threshold Perc" sap:quickinfo="Threshold Percentage"/>
+                <Property Name="ThreshRef" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Service Parameter"/>
+                <Property Name="Remark" Type="Edm.String" MaxLength="50" sap:display-format="UpperCase" sap:label="Remark" sap:quickinfo="Remarks"/>
+                <Property Name="CalculatedValue" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Calculated Value"/>
+            </EntityType>
+            <Association Name="IdtoServiceAsso" sap:content-version="1">
+                <End Type="ZSERV_PD_SRV.CreateSP" Multiplicity="1" Role="FromRole_IdtoServiceAsso"/>
+                <End Type="ZSERV_PD_SRV.ServProf" Multiplicity="*" Role="ToRole_IdtoServiceAsso"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_IdtoServiceAsso">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_IdtoServiceAsso">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZSERV_PD_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZServProf_Get" EntityType="ZSERV_PD_SRV.ZServProf_GetType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ServProfSet" EntityType="ZSERV_PD_SRV.ServProf" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="CreateSPSet" EntityType="ZSERV_PD_SRV.CreateSP" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="IdtoServiceAssoSet" Association="ZSERV_PD_SRV.IdtoServiceAsso" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CreateSPSet" Role="FromRole_IdtoServiceAsso"/>
+                    <End EntitySet="ServProfSet" Role="ToRole_IdtoServiceAsso"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="ZSERV_PD_SRV.ZSERV_PD_SRV_Entities"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://35.185.33.183:8001/sap/opu/odata/sap/ZSERV_PD_SRV/$metadata"
+                xmlns:atom="http://www.w3.org/2005/Atom"/>
+                <atom:link rel="latest-version" href="http://35.185.33.183:8001/sap/opu/odata/sap/ZSERV_PD_SRV/$metadata"
+                    xmlns:atom="http://www.w3.org/2005/Atom"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

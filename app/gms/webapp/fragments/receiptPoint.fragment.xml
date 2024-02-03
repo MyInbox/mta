@@ -1,0 +1,21 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+    <SelectDialog
+        id="receiptPoint"
+        noDataText="No Products Found"
+        title="Select Location"
+        search="onValueHelpSearch12"
+        confirm="onValueHelpClose12"
+        cancel="onValueHelpClose12"
+        items="{/LocationPointSet}">
+        <StandardListItem id="_IDGenStandardListItem12"
+            title="{Locid}"
+            description="{Locnam}"
+       
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,21 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+    <SelectDialog
+        id="division"
+        noDataText="No Products Found"
+        title="Select Division"
+        search="onValueHelpSearch6"
+        confirm="onValueHelpClose6"
+        cancel="onValueHelpClose6"
+        items="{/DivisionSet}">
+        <StandardListItem id="_IDGenStandardListItem6"
+            title="{Spart}"
+            description="{Spart}"
+       
+            iconDensityAware="false"
+            iconInset="false"
+            type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

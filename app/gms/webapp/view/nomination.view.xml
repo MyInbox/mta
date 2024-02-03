@@ -1,0 +1,30 @@
+<mvc:View controllerName="app.gms.controller.nomination"
+          xmlns:mvc="sap.ui.core.mvc"
+          displayBlock="true"
+          xmlns="sap.m">
+
+  <GenericTile id="_IDGenGenericTile1" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Publish Gas Nomination" press="publishNom">
+    <TileContent id="_IDGenTileContent1">
+      <ImageContent id="_IDGenImageContent1" src="sap-icon://decision" />
+    </TileContent>
+  </GenericTile>
+
+  <GenericTile id="_IDGenGenericTile2" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Publish Gas ReNomination" press="publishReNom">
+    <TileContent id="_IDGenTileContent2">
+      <ImageContent id="_IDGenImageContent2" src="sap-icon://clinical-order" />
+    </TileContent>
+  </GenericTile>
+
+  <GenericTile id="_IDGenGenericTile3" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Display Gas Nomination" press="">
+    <TileContent id="_IDGenTileContent3">
+      <ImageContent id="_IDGenImageContent3" src="sap-icon://sys-find" />
+    </TileContent>
+  </GenericTile>
+
+  <!-- <GenericTile id="_IDGenGenericTile4" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Create System Nomination" press="">
+    <TileContent id="_IDGenTileContent4">
+      <ImageContent id="_IDGenImageContent4" src="sap-icon://home-share" />
+    </TileContent>
+  </GenericTile> -->
+
+</mvc:View>

@@ -1,0 +1,11 @@
+<mvc:View controllerName="app.gms.controller.home"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+        <Page id="page">
+	<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Business Transaction" press="onCreate" >
+		<TileContent id="_IDGenTileContent48" >
+            <ImageContent id="_IDGenImageContent" src="sap-icon://create" />
+        </TileContent>
+	</GenericTile>
+    </Page>
+</mvc:View>
