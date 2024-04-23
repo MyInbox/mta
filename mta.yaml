@@ -9,6 +9,7 @@ modules:
   requires:
   - name: gms-destination
   - name: gms-db
+  - name: gms-auth
   provides:
   - name: srv-api
     properties:
@@ -65,6 +66,15 @@ resources:
           existing_destinations_policy: update
     service: destination
     service-plan: lite
+- name: gms-auth
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      tenant-mode: dedicated
+      xsappname: gms
+    path: ./xs-security.json
+    service: xsuaa
+    service-plan: application    
 - name: gms-db
   type: com.sap.xs.hdi-container
   parameters:
