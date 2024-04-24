@@ -3,111 +3,125 @@ ID: gms
 description: A simple CAP project.
 version: 1.0.0
 modules:
-  - name: gms-srv
-    type: nodejs
-    path: gen/srv
-    requires:
-      - name: gms-destination
-      - name: gms-db-mt
-      - name: gms-auth
-    provides:
-      - name: srv-api
-        properties:
-          srv-url: ${default-url}
-    parameters:
-      buildpack: nodejs_buildpack
-    build-parameters:
-      builder: npm
-  - name: gms-db-deployer
-    type: hdb
-    path: gen/db
-    requires:
-      - name: gms-db-mt
-    parameters:
-      buildpack: nodejs_buildpack
-  - name: gms-app-content
-    type: com.sap.application.content
-    path: .
-    requires:
-      - name: gms-repo-host
-        parameters:
-          content-target: true
-    build-parameters:
-      build-result: resources
-      requires:
-        - artifacts:
-            - appconfig.zip
-          name: gms-appconfig
-          target-path: resources/
-  - name: gms-appconfig
-    type: html5
-    path: app/config
-    build-parameters:
-      build-result: dist
-      builder: custom
-      commands:
-        - npm install
-        - npm run build:cf
-      supported-platforms: []
-    requires:
-      - name: gms-auth
-      - name: gms-destination
-resources:
+- name: gms-srv
+  type: nodejs
+  path: gen/srv
+  requires:
   - name: gms-destination
-    type: org.cloudfoundry.managed-service
-    parameters:
-      config:
-        HTML5Runtime_enabled: false
-        init_data:
-          instance:
-            destinations:
-              - Authentication: NoAuthentication
-                Name: ui5
-                ProxyType: Internet
-                Type: HTTP
-                URL: https://ui5.sap.com
-              - Authentication: NoAuthentication
-                HTML5.DynamicDestination: true
-                HTML5.ForwardAuthToken: true
-                Name: gms-srv-api
-                ProxyType: Internet
-                Type: HTTP
-                URL: ~{srv-api/srv-url}
-            existing_destinations_policy: update
-      service: destination
-      service-plan: lite
-    requires:
-      - name: srv-api
-  - name: gms-auth
-    type: org.cloudfoundry.managed-service
-    parameters:
-      config:
-        tenant-mode: dedicated
-        xsappname: gms_Ingenx_Technology_LLC_training_ingenx_dev
-      path: ./xs-security.json
-      service: xsuaa
-      service-plan: application
   - name: gms-db-mt
-    type: com.sap.xs.hdi-container
-    parameters:
-      service: hana
-      service-plan: hdi-shared
+  - name: gms-auth
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+  build-parameters:
+    builder: npm
+- name: gms-db-deployer
+  type: hdb
+  path: gen/db
+  requires:
+  - name: gms-db-mt
+  parameters:
+    buildpack: nodejs_buildpack
+- name: gms-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
   - name: gms-repo-host
-    type: org.cloudfoundry.managed-service
     parameters:
-      build-parameters:
-        before-all:
-        - builder: custom
-          commands:
-          - npx cds build --production
-      config:
-        sizeLimit: 2    
-      service: html5-apps-repo
-      service-plan: app-host
-      deploy_mode: html5-repo
-      enable-parallel-deployments: true
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - appconfig.zip
+      name: gms-appconfig
+      target-path: resources/
+- name: gms-appconfig
+  type: html5
+  path: app/config
+  requires:
+  - name: gms-auth
+  - name: gms-destination
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: gms-approuter
+  type: approuter.nodejs
+  path: gms-approuter
+  requires:
+  - name: gms_html_repo_runtime
+  - name: gms-auth
+  parameters:
+    disk-quota: 256M
+    memory: 256M
+resources:
+- name: gms-destination
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: false
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          - Authentication: NoAuthentication
+            HTML5.DynamicDestination: true
+            HTML5.ForwardAuthToken: true
+            Name: gms-srv-api
+            ProxyType: Internet
+            Type: HTTP
+            URL: ~{srv-api/srv-url}
+          existing_destinations_policy: update
+    service: destination
+    service-plan: lite
+  requires:
+  - name: srv-api
+- name: gms-auth
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      tenant-mode: dedicated
+      xsappname: gms_Ingenx_Technology_LLC_training_ingenx_dev
+    path: ./xs-security.json
+    service: xsuaa
+    service-plan: application
+- name: gms-db-mt
+  type: com.sap.xs.hdi-container
+  parameters:
+    service: hana
+    service-plan: hdi-shared
+- name: gms-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    build-parameters:
+      before-all:
+      - builder: custom
+        commands:
+        - npx cds build --production
+    config:
+      sizeLimit: 2
+    deploy_mode: html5-repo
+    enable-parallel-deployments: true
+    service: html5-apps-repo
+    service-plan: app-host
+- name: gms_html_repo_runtime
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-runtime
 build-parameters:
   before-all:
-    - builder: custom
-      commands:
-        - npx cds build --production
+  - builder: custom
+    commands:
+    - npx cds build --production
