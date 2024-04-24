@@ -140,7 +140,13 @@
 			"plugin_name": "com.sap.hana.di.schedulerjob"
 		},
 		"hdbeshconfig": {
-            "plugin_name": "com.sap.hana.di.eshconfig"
-        }
+			"plugin_name": "com.sap.hana.di.eshconfig"
+		},
+		"hdbafllangprocedure": {
+			"plugin_name": "com.sap.hana.di.afllangprocedure"
+		},
+		"hdbhadoopmrjob": {
+			"plugin_name": "com.sap.hana.di.virtualfunctionpackage.hadoop"
+		}
 	}
 }
