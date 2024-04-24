@@ -8,7 +8,7 @@ modules:
     path: gen/srv
     requires:
       - name: gms-destination
-      - name: gms-db
+      - name: gms-db-mt
       - name: gms-auth
     provides:
       - name: srv-api
@@ -22,7 +22,7 @@ modules:
     type: hdb
     path: gen/db
     requires:
-      - name: gms-db
+      - name: gms-db-mt
     parameters:
       buildpack: nodejs_buildpack
   - name: gms-app-content
@@ -37,9 +37,9 @@ modules:
       requires:
         - artifacts:
             - appconfig.zip
-          name: appconfig
+          name: gms-appconfig
           target-path: resources/
-  - name: appconfig
+  - name: gms-appconfig
     type: html5
     path: app/config
     build-parameters:
@@ -48,8 +48,10 @@ modules:
       commands:
         - npm install
         - npm run build:cf
-      supported-platforms:
-        []
+      supported-platforms: []
+    requires:
+      - name: gms-auth
+      - name: gms-destination
 resources:
   - name: gms-destination
     type: org.cloudfoundry.managed-service
@@ -85,7 +87,7 @@ resources:
       path: ./xs-security.json
       service: xsuaa
       service-plan: application
-  - name: gms-db
+  - name: gms-db-mt
     type: com.sap.xs.hdi-container
     parameters:
       service: hana
@@ -93,12 +95,17 @@ resources:
   - name: gms-repo-host
     type: org.cloudfoundry.managed-service
     parameters:
+      build-parameters:
+        before-all:
+        - builder: custom
+          commands:
+          - npx cds build --production
+      config:
+        sizeLimit: 2    
       service: html5-apps-repo
-      service-name: gms-html5-srv
       service-plan: app-host
-parameters:
-  deploy_mode: html5-repo
-  enable-parallel-deployments: true
+      deploy_mode: html5-repo
+      enable-parallel-deployments: true
 build-parameters:
   before-all:
     - builder: custom
