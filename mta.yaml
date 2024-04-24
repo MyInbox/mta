@@ -61,6 +61,41 @@ modules:
   parameters:
     disk-quota: 256M
     memory: 256M
+- name: GMS-managed-fiori-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: srv-api 
+  - name: gms-auth
+    parameters:
+      service-key:
+        name: gms-auth-key
+  - name: gms-repo-host
+    parameters:
+      service-key:
+        name: gms-repo-host-key
+  - name: gms-destination
+    parameters:
+      content-target: true
+  parameters:
+    service-plan: lite
+    service-name: gms-destination
+    service: destination
+    content:
+      instance:
+        destinations:
+        - Name: gms-destination-html5
+          ServiceInstanceName: gms-repo-host
+          ServiceKeyName: gms-repo-host-key
+          sap.cloud.service: app.config
+        - Authentication: OAuth2UserTokenExchange
+          Name: gms-destination-uaa
+          ServiceInstanceName: gms-auth
+          ServiceKeyName: gms-auth-key
+          sap.cloud.service: app.config
+        existing_destinations_policy: update
+  build-parameters:
+    no-source: true 
+
 resources:
 - name: gms-destination
   type: org.cloudfoundry.managed-service
