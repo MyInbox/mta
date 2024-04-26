@@ -5,7 +5,7 @@
     {
       "source": "^.*/odata/v4/odataservices/(.*)$",
       "target": "/odata/v4/odataservices/$1",
-      "destination": "gms-srv-api",
+      "destination": "gms-mt-srv-api",
       "authenticationType": "xsuaa",
       "csrfProtection": false
     },
