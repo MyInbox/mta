@@ -1,15 +1,15 @@
 _schema-version: "3.1"
-ID: gms
+ID: gms-mt
 description: A simple CAP project.
 version: 1.0.0
 modules:
-- name: gms-srv
+- name: gms-mt-srv
   type: nodejs
   path: gen/srv
   requires:
-  - name: gms-destination
-  - name: gms-db-mt
-  - name: gms-auth
+  - name: gms-mt-destination
+  - name: gms-mt-db-mt
+  - name: gms-mt-auth
   provides:
   - name: srv-api
     properties:
@@ -18,18 +18,21 @@ modules:
     buildpack: nodejs_buildpack
   build-parameters:
     builder: npm
-- name: gms-db-deployer
+    ignore: ["node_modules/"]
+- name: gms-mt-db-deployer
   type: hdb
   path: gen/db
   requires:
-  - name: gms-db-mt
+  - name: gms-mt-db-mt
   parameters:
     buildpack: nodejs_buildpack
-- name: gms-app-content
+  build-parameters:
+    ignore: ["node_modules/"]
+- name: gms-mt-app-content
   type: com.sap.application.content
   path: .
   requires:
-  - name: gms-repo-host
+  - name: gms-mt-config-repo-host
     parameters:
       content-target: true
   build-parameters:
@@ -37,14 +40,14 @@ modules:
     requires:
     - artifacts:
       - appconfig.zip
-      name: gms-appconfig
+      name: gms-mt-appconfig
       target-path: resources/
-- name: gms-appconfig
+- name: gms-mt-appconfig
   type: html5
   path: app/config
   requires:
-  - name: gms-auth
-  - name: gms-destination
+  - name: gms-mt-auth
+  - name: gms-mt-destination
   build-parameters:
     build-result: dist
     builder: custom
@@ -52,52 +55,56 @@ modules:
     - npm install
     - npm run build:cf
     supported-platforms: []
-- name: gms-approuter
+- name: gms-mt-approuter
   type: approuter.nodejs
-  path: gms-approuter
+  path: gms-mt-approuter
   requires:
-  - name: gms_html_repo_runtime
-  - name: gms-auth
+  - name: gms-mt-html-repo-runtime
+  - name: gms-mt-auth
+  - name: gms-mt-destination
   parameters:
     disk-quota: 256M
     memory: 256M
-- name: GMS-managed-fiori-destination-content
+    buildpack: nodejs_buildpack    
+  build-parameters:
+    ignore: ["node_modules/"]
+- name: gms-mt-managed-fiori-destination-content
   type: com.sap.application.content
   requires:
   - name: srv-api 
-  - name: gms-auth
+  - name: gms-mt-auth
     parameters:
       service-key:
-        name: gms-auth-key
-  - name: gms-repo-host
+        name: gms-mt-auth-key
+  - name: gms-mt-config-repo-host
     parameters:
       service-key:
-        name: gms-repo-host-key
-  - name: gms-destination
+        name: gms-mt-config-repo-host-key
+  - name: gms-mt-destination
     parameters:
       content-target: true
   parameters:
     service-plan: lite
-    service-name: gms-destination
+    service-name: gms-mt-destination
     service: destination
     content:
       instance:
         destinations:
-        - Name: gms-destination-html5
-          ServiceInstanceName: gms-repo-host
-          ServiceKeyName: gms-repo-host-key
+        - Name: gms-mt-destination-html5
+          ServiceInstanceName: gms-mt-config-repo-host
+          ServiceKeyName: gms-mt-config-repo-host-key
           sap.cloud.service: app.config
         - Authentication: OAuth2UserTokenExchange
-          Name: gms-destination-uaa
-          ServiceInstanceName: gms-auth
-          ServiceKeyName: gms-auth-key
+          Name: gms-mt-destination-uaa
+          ServiceInstanceName: gms-mt-auth
+          ServiceKeyName: gms-mt-auth-key
           sap.cloud.service: app.config
         existing_destinations_policy: update
   build-parameters:
     no-source: true 
 
 resources:
-- name: gms-destination
+- name: gms-mt-destination
   type: org.cloudfoundry.managed-service
   parameters:
     config:
@@ -113,7 +120,7 @@ resources:
           - Authentication: NoAuthentication
             HTML5.DynamicDestination: true
             HTML5.ForwardAuthToken: true
-            Name: gms-srv-api
+            Name: gms-mt-srv-api
             ProxyType: Internet
             Type: HTTP
             URL: ~{srv-api/srv-url}
@@ -122,21 +129,18 @@ resources:
     service-plan: lite
   requires:
   - name: srv-api
-- name: gms-auth
+- name: gms-mt-auth
   type: org.cloudfoundry.managed-service
   parameters:
-    config:
-      tenant-mode: dedicated
-      xsappname: gms_Ingenx_Technology_LLC_training_ingenx_dev
     path: ./xs-security.json
     service: xsuaa
     service-plan: application
-- name: gms-db-mt
+- name: gms-mt-db-mt
   type: com.sap.xs.hdi-container
   parameters:
     service: hana
     service-plan: hdi-shared
-- name: gms-repo-host
+- name: gms-mt-config-repo-host
   type: org.cloudfoundry.managed-service
   parameters:
     build-parameters:
@@ -150,7 +154,7 @@ resources:
     enable-parallel-deployments: true
     service: html5-apps-repo
     service-plan: app-host
-- name: gms_html_repo_runtime
+- name: gms-mt-html-repo-runtime
   type: org.cloudfoundry.managed-service
   parameters:
     service: html5-apps-repo
