@@ -8,6 +8,7 @@ modules:
   path: gen/srv
   requires:
   - name: gms-mt-destination
+  - name: gms-mt-connectivity
   - name: gms-mt-db-mt
   - name: gms-mt-auth
   provides:
@@ -129,6 +130,11 @@ resources:
     service-plan: lite
   requires:
   - name: srv-api
+- name: gms-mt-connectivity
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: connectivity
+    service-plan: lite      
 - name: gms-mt-auth
   type: org.cloudfoundry.managed-service
   parameters:
