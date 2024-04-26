@@ -10,6 +10,7 @@
     "@sap-cloud-sdk/resilience": "^3.11.0",
     "@sap/cds": "^7",
     "@sap/cds-hana": "^2",
+    "@sap/cds-mtxs": "^1.17.0",
     "@sap/cds-odata-v2-adapter-proxy": "^1.9.21",
     "express": "^4"
   },
@@ -30,7 +31,8 @@
   },
   "cds": {
     "requires": {
-      "auth": "mocked",
+      "multitenancy": true,
+      "auth": "xsuaa",
       "db": "hana",
       "ZGMS_VALUE_HELP_SRV": {
         "kind": "odata-v2",
@@ -44,6 +46,7 @@
           }
         },
         "[development]": {
+          "multitenancy": true,
           "credentials": {
             "destination": "SandboxPO",
             "path": "/sap/opu/odata/sap/ZGMS_VALUE_HELP_SRV"
@@ -139,7 +142,14 @@
             "path": "/sap/opu/odata/sap/ZSERV_PD_SRV"
           }
         }
+      },
+      "[production]": {
+        "multitenancy": true
+      },
+      "[local-multitenancy]": {
+        "multitenancy": true
       }
-    }
+    },
+    "profile": "with-mtx-sidecar"
   }
 }
