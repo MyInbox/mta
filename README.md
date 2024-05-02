@@ -23,3 +23,12 @@ File or Folder | Purpose
 ## Learn More
 
 Learn more at https://cap.cloud.sap/docs/get-started/.
+
+
+## MTX
+
+Add Standalone Approuter  
+Add SaaS Registry Roles   
+    - Subscription Management Dashboard Administrator
+    - Subscription Management Dashboard Viewer
+

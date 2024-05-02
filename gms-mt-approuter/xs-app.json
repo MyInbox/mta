@@ -18,7 +18,6 @@
     {
       "source": "^/test-resources/(.*)$",
       "target": "/test-resources/$1",
-
       "authenticationType": "none",
       "destination": "ui5"
     },

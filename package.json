@@ -34,6 +34,10 @@
       "multitenancy": true,
       "auth": "xsuaa",
       "db": "hana",
+      "destinationOptions": {
+        "selectionStrategy": "alwaysSubscriber",
+        "useCache": false
+      },
       "ZGMS_VALUE_HELP_SRV": {
         "kind": "odata-v2",
         "model": "srv/external/ZGMS_VALUE_HELP_SRV",

@@ -2,6 +2,11 @@ _schema-version: "3.1"
 ID: gms-mt
 description: Multi-tenant App for GMS Config.
 version: 1.0.0
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npx cds build --production
 modules:
   - name: gms-mt-srv
     type: nodejs
@@ -52,11 +57,17 @@ modules:
   - name: gms-mt-approuter
     type: approuter.nodejs
     path: gms-mt-approuter
+    properties:
+      TENANT_HOST_PATTERN: "^(.*)-dev-gms-mt-approuter.cfapps.eu10-004.hana.ondemand.com"   
     requires:
       - name: gms-mt-html-repo-runtime
       - name: gms-mt-auth
       - name: gms-mt-destination
+      - name: srv-api
     parameters:
+      keep-existing-routes : true
+      routes:
+        - route: https://*-dev-gms-mt-approuter.cfapps.eu10-004.hana.ondemand.com   
       disk-quota: 256M
       memory: 256M
       buildpack: nodejs_buildpack
@@ -97,7 +108,6 @@ modules:
           existing_destinations_policy: update
     build-parameters:
       no-source: true
-
   - name: gms-mt-mtx
     type: nodejs
     path: gen/mtx/sidecar
@@ -115,7 +125,9 @@ modules:
     requires:
       - name: gms-mt-db
       - name: gms-mt-auth
-
+      - name: gms-mt-destination
+      - name: gms-mt-connectivity
+      - name: gms-mt-registry
 resources:
   - name: gms-mt-destination
     type: org.cloudfoundry.managed-service
@@ -180,10 +192,10 @@ resources:
       service: saas-registry
       service-plan: application
       config:
-        xsappname: gms-mt-${org}-${space}
-        appName: gms-mt-${org}-${space}
-        displayName: gms-mt
-        description: A simple CAP project.
+        xsappname: gms-mt
+        appName: gms-mt
+        displayName: Gas Management System - Config
+        description: Configuration for Gas Management System
         category: 'Category'
         appUrls:
           getDependencies: ~{mtx-api/mtx-url}/-/cds/saas-provisioning/dependencies
@@ -191,14 +203,10 @@ resources:
           onSubscriptionAsync: true
           onUnSubscriptionAsync: true
           onUpdateDependenciesAsync: true
-          callbackTimeoutMillis: 300000 # Increase if your deployments are taking longer than that
+          callbackTimeoutMillis: 600000 # Increase if your deployments are taking longer than that
   - name: gms-mt-db
     type: org.cloudfoundry.managed-service
     parameters:
       service: service-manager
       service-plan: container
-build-parameters:
-  before-all:
-    - builder: custom
-      commands:
-        - npx cds build --production
+
