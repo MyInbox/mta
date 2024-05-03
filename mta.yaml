@@ -17,7 +17,7 @@ modules:
       - name: gms-mt-auth
       - name: gms-mt-db
     provides:
-      - name: srv-api
+      - name: gms-mt-srv-api
         properties:
           srv-url: ${default-url}
     parameters:
@@ -63,7 +63,7 @@ modules:
       - name: gms-mt-html-repo-runtime
       - name: gms-mt-auth
       - name: gms-mt-destination
-      - name: srv-api
+      - name: gms-mt-srv-api
     parameters:
       keep-existing-routes : true
       routes:
@@ -77,7 +77,7 @@ modules:
   - name: gms-mt-managed-fiori-destination-content
     type: com.sap.application.content
     requires:
-      - name: srv-api
+      - name: gms-mt-srv-api
       - name: gms-mt-auth
         parameters:
           service-key:
@@ -148,12 +148,12 @@ resources:
                 Name: gms-mt-srv-api
                 ProxyType: Internet
                 Type: HTTP
-                URL: ~{srv-api/srv-url}
+                URL: ~{gms-mt-srv-api/srv-url}
             existing_destinations_policy: update
       service: destination
       service-plan: lite
     requires:
-      - name: srv-api
+      - name: gms-mt-srv-api
   - name: gms-mt-connectivity
     type: org.cloudfoundry.managed-service
     parameters:
