@@ -34,6 +34,7 @@
       "multitenancy": true,
       "auth": "xsuaa",
       "db": "hana",
+      "cds.xt.SaasProvisioningService": true,
       "destinationOptions": {
         "selectionStrategy": "alwaysSubscriber",
         "useCache": false
@@ -146,12 +147,6 @@
             "path": "/sap/opu/odata/sap/ZSERV_PD_SRV"
           }
         }
-      },
-      "[production]": {
-        "multitenancy": true
-      },
-      "[local-multitenancy]": {
-        "multitenancy": true
       }
     },
     "profile": "with-mtx-sidecar"

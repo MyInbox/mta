@@ -15,6 +15,16 @@
     "start": "cds-serve"
   },
   "cds": {
-    "profile": "mtx-sidecar"
+    "profile": "mtx-sidecar",
+     "requires": {
+        "multitenancy": true,
+        "auth": "xsuaa",
+        "db": "hana",
+        "cds.xt.SaasProvisioningService": true,
+        "destinationOptions": {
+          "selectionStrategy": "alwaysSubscriber",
+          "useCache": false
+        }  
+     }
   }
 }
