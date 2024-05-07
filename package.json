@@ -35,8 +35,9 @@
       "auth": "xsuaa",
       "db": "hana",
       "cds.xt.SaasProvisioningService": true,
+      "cds.xt.DeploymentService": true,
       "destinationOptions": {
-        "selectionStrategy": "alwaysSubscriber",
+        "selectionStrategy": "subscriberFirst",
         "useCache": false
       },
       "ZGMS_VALUE_HELP_SRV": {
@@ -148,7 +149,6 @@
           }
         }
       }
-    },
-    "profile": "with-mtx-sidecar"
+    }
   }
 }

@@ -1,4 +1,5 @@
 const cds = require('@sap/cds');
+const xsenv = require("@sap/xsenv");
 
 module.exports = async (srv) => {
 
@@ -64,4 +65,21 @@ module.exports = async (srv) => {
   srv.on('READ', 'CapacityReleaseSet', req => ZCAPACITYRELEASE_SRV.run(req.query));
   srv.on('CREATE', 'CreateCRSet', req => ZCAPACITYRELEASE_SRV.run(req.query));
 
+  const { 'cds.xt.DeploymentService': ds } = cds.services
+  const {'cds.xt.SaasProvisioningService': sp} = cds.services
+
+  sp.before('dependencies', async (_, Req) => {
+
+    const services = xsenv.getServices({
+        // html5Runtime: { tag: 'html5-apps-repo-rt' },
+        destination: { tag: 'destination' },
+        connectivity: { tag: "connectivity" }
+    });
+
+    cds.env.requires["cds.xt.SaasProvisioningService"].dependencies = [];
+    // cds.env.requires["cds.xt.SaasProvisioningService"].dependencies.push(services.html5Runtime.uaa.xsappname);
+    cds.env.requires["cds.xt.SaasProvisioningService"].dependencies.push(services.destination.xsappname);
+    cds.env.requires["cds.xt.SaasProvisioningService"].dependencies.push(services.connectivity.xsappname);
+  
+  });
 }
